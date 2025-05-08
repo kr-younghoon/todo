@@ -1,9 +1,10 @@
+import TodoForm from '@/components/TodoForm';
+
 export default function Home() {
     return (
         <>
             <div>
-                <input type="text" />
-                <button>추가하기</button>
+                <TodoForm />
             </div>
             <div>
                 <div>
