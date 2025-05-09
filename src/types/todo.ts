@@ -16,3 +16,8 @@ export interface UpdateTodoPayload {
     itemId: number;
     data: TodoFormData;
 }
+
+export interface NameFieldState {
+    name: string;
+    isCompleted: boolean;
+}

@@ -1,22 +1,46 @@
-export default function item() {
+'use client';
+
+import NameField from '@/components/TodoDetail/NameField';
+import { useTodoDetail } from '@/hooks/useTodos';
+import { Todo } from '@/types/todo';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+export default function TodoDetailPage() {
+    const id = Number(useParams().itemid);
+    const {
+        data: todo,
+        isLoading,
+        isError,
+    } = useTodoDetail(id);
+
+    console.log(todo);
+
+    const [currentTodo, setCurrentTodo] = useState<Todo>({
+        id: id,
+        tenantId: '',
+        name: '',
+        memo: '',
+        imageUrl: '',
+        isCompleted: false,
+    });
+
+    useEffect(() => {
+        if (todo) setCurrentTodo(todo);
+    }, [todo]);
+
+    if (isLoading) return <p>로딩 중...</p>;
+    if (isError || !todo)
+        return <p>존재하지 않는 항목입니다.</p>;
+
     return (
-        <>
-            <div>
-                <button></button>
-                <h1>head</h1>
-            </div>
-            <div>
-                <div>
-                    <p>이미지</p>
-                </div>
-                <div>
-                    <p>메모</p>
-                </div>
-            </div>
-            <div>
-                <button>수정 완료</button>
-                <button>삭제하기</button>
-            </div>
-        </>
+        <div>
+            <h2>TODO DETAIL - {id}</h2>
+
+            <NameField
+                initialName={currentTodo.name}
+                initialCompleted={currentTodo.isCompleted}
+            />
+        </div>
     );
 }
