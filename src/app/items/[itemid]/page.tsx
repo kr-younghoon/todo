@@ -1,6 +1,7 @@
 'use client';
 
 import ImageUpload from '@/components/TodoDetail/ImageUpload';
+import MemoField from '@/components/TodoDetail/MemoField';
 import NameField from '@/components/TodoDetail/NameField';
 import {
     useTodoDetail,
@@ -58,6 +59,13 @@ export default function TodoDetailPage() {
         });
     };
 
+    const handleMemoChange = (newMemo: string) => {
+        setCurrentTodo((prev) => ({
+            ...prev,
+            memo: newMemo,
+        }));
+    };
+
     return (
         <div>
             <h2>TODO DETAIL - {id}</h2>
@@ -69,6 +77,10 @@ export default function TodoDetailPage() {
             <ImageUpload
                 initialUrl={currentTodo.imageUrl}
                 onFileSelect={handleFileSelect}
+            />
+            <MemoField
+                initialMemo={currentTodo.memo}
+                onChange={handleMemoChange}
             />
         </div>
     );
