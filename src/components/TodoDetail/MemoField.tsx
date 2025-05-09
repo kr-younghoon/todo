@@ -18,7 +18,7 @@ export default function MemoField({
 
     return (
         <textarea
-            value={memo}
+            value={memo ?? ''}
             onChange={(
                 e: ChangeEvent<HTMLTextAreaElement>
             ) => setMemo(e.target.value)}
