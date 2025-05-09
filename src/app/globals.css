@@ -1,4 +1,54 @@
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    /* Font */
+    --fw-R: 400;
+    --fw-B: 700;
+    --fw-EB: 800;
+    --fw-L: 300;
+    --fs-20: 20px;
+    --fs-18: 18px;
+    --fs-16: 16px;
+
+    /* 조합 변수 (font-weight + font-size) */
+    --font-B-20: var(--fw-B) var(--fs-20);
+    --font-B-18: var(--fw-B) var(--fs-18);
+    --font-EB-16: var(--fw-EB) var(--fs-16);
+    --font-B-16: var(--fw-B) var(--fs-16);
+    --font-R-16: var(--fw-R) var(--fs-16);
+
+    /* ─── 컬러 변수 등록 ─── */
+    /* Slate */
+    --color-slate-900: #0f172a;
+    --color-slate-800: #1e293b;
+    --color-slate-500: #64748b;
+    --color-slate-400: #94a3b8;
+    --color-slate-300: #cbd5e1;
+    --color-slate-200: #e2e8f0;
+    --color-slate-100: #f1f5f9;
+
+    /* Violet */
+    --color-violet-600: #7c3aed;
+    --color-violet-100: #ede9fe;
+
+    /* Rose & Lime */
+    --color-rose-500: #f43f5e;
+    --color-lime-300: #bef264;
+
+    /* Amber */
+    --color-amber-800: #92400e;
+}
+
+.fB20 {
+    font: var(--font-B-20) 'NanumSquare', sans-serif;
+}
+.fB18 {
+    font: var(--font-B-18) 'NanumSquare', sans-serif;
+}
+.fEB16 {
+    font: var(--font-EB-16) 'NanumSquare', sans-serif;
+}
+.fB16 {
+    font: var(--font-B-16) 'NanumSquare', sans-serif;
+}
+.fR16 {
+    font: var(--font-R-16) 'NanumSquare', sans-serif;
 }
