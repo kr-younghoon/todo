@@ -1,7 +1,11 @@
 'use client';
 
+import ImageUpload from '@/components/TodoDetail/ImageUpload';
 import NameField from '@/components/TodoDetail/NameField';
-import { useTodoDetail } from '@/hooks/useTodos';
+import {
+    useTodoDetail,
+    useUploadImage,
+} from '@/hooks/useTodos';
 import { NameFieldState, Todo } from '@/types/todo';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -13,6 +17,7 @@ export default function TodoDetailPage() {
         isLoading,
         isError,
     } = useTodoDetail(id);
+    const uploadImage = useUploadImage();
 
     console.log(todo);
 
@@ -42,14 +47,28 @@ export default function TodoDetailPage() {
         }));
     };
 
+    const handleFileSelect = (file: File) => {
+        console.log('test', file, currentTodo);
+        uploadImage.mutate(file, {
+            onSuccess: (url) =>
+                setCurrentTodo((prev) => ({
+                    ...prev,
+                    imageUrl: url,
+                })),
+        });
+    };
+
     return (
         <div>
             <h2>TODO DETAIL - {id}</h2>
-
             <NameField
                 initialName={currentTodo.name}
                 initialCompleted={currentTodo.isCompleted}
                 onChange={handleNameChange}
+            />
+            <ImageUpload
+                initialUrl={currentTodo.imageUrl}
+                onFileSelect={handleFileSelect}
             />
         </div>
     );
