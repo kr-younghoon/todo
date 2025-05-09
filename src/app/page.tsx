@@ -1,4 +1,5 @@
-import TodoForm from '@/components/TodoForm';
+import TodoColumn from '@/components/Home/TodoColumn/TodoColumn';
+import TodoForm from '@/components/Home/TodoForm';
 
 export default function Home() {
     return (
@@ -7,12 +8,7 @@ export default function Home() {
                 <TodoForm />
             </div>
             <div>
-                <div>
-                    <h1>TO DO</h1>
-                </div>
-                <div>
-                    <h1>DONE</h1>
-                </div>
+                <TodoColumn />
             </div>
         </>
     );

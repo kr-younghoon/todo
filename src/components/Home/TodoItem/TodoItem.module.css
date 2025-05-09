@@ -1,0 +1,28 @@
+/* components/TodoItem/TodoItem.module.css */
+.item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.item input {
+    margin-right: 8px;
+    cursor: pointer; /* 체크박스 위에선 포인터 모양 유지 */
+}
+
+.name {
+    flex: 1;
+}
+
+.completed {
+    background-color: #e0ffe0;
+}
+
+.pending {
+    background-color: #ffe0e0;
+}
