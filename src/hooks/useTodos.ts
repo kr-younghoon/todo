@@ -1,7 +1,10 @@
+import { Todo, UpdateTodoPayload } from '@/types/todo';
 import {
     useMutation,
+    UseMutationResult,
     useQuery,
     useQueryClient,
+    UseQueryResult,
 } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -20,15 +23,16 @@ const TENANT_ID = 'sullanta0802';
  *   }
  * ]
  */
-export const useTodos = () =>
-    useQuery({
+export const useTodos = (): UseQueryResult<Todo[], Error> =>
+    useQuery<Todo[], Error>({
         queryKey: ['todos'],
         queryFn: async () => {
-            const res = await axios.get(
+            const res = await axios.get<Todo[]>(
                 `${BASE_URL}/${TENANT_ID}/items`
             );
             return res.data;
         },
+        // staleTime: 60_000,
     });
 
 /** 항목 상세 조회
@@ -44,11 +48,13 @@ export const useTodos = () =>
  *   "id": 0
  * }
  */
-export const useTodoDetail = (itemId: number) =>
-    useQuery({
+export const useTodoDetail = (
+    itemId: number
+): UseQueryResult<Todo, Error> =>
+    useQuery<Todo, Error>({
         queryKey: ['todo', itemId],
         queryFn: async () => {
-            const res = await axios.get(
+            const res = await axios.get<Todo>(
                 `${BASE_URL}/${TENANT_ID}/items/${itemId}`
             );
             return res.data;
@@ -68,11 +74,15 @@ export const useTodoDetail = (itemId: number) =>
  *   "isCompleted": false
  * }
  */
-export const useCreateTodo = () => {
+export const useCreateTodo = (): UseMutationResult<
+    Todo,
+    Error,
+    { name: string }
+> => {
     const queryClient = useQueryClient();
-    return useMutation({
+    return useMutation<Todo, Error, { name: string }>({
         mutationFn: async (data: { name: string }) => {
-            const res = await axios.post(
+            const res = await axios.post<Todo>(
                 `${BASE_URL}/${TENANT_ID}/items`,
                 data
             );
@@ -102,22 +112,18 @@ export const useCreateTodo = () => {
  * @param data 수정할 필드 (name, memo, imageUrl, isCompleted)
  * @returns 수정된 Todo 객체
  */
-export const useUpdateTodo = () => {
+export const useUpdateTodo = (): UseMutationResult<
+    Todo,
+    Error,
+    UpdateTodoPayload
+> => {
     const queryClient = useQueryClient();
-    return useMutation({
+    return useMutation<Todo, Error, UpdateTodoPayload>({
         mutationFn: async ({
             itemId,
             data,
-        }: {
-            itemId: number;
-            data: {
-                name: string;
-                memo: string;
-                imageUrl: string;
-                isCompleted: boolean;
-            };
-        }) => {
-            const res = await axios.patch(
+        }: UpdateTodoPayload) => {
+            const res = await axios.patch<Todo>(
                 `${BASE_URL}/${TENANT_ID}/items/${itemId}`,
                 data
             );
@@ -149,13 +155,17 @@ export const useUpdateTodo = () => {
  *   "message": "string"
  * }
  */
-export const useDeleteTodo = () => {
+export const useDeleteTodo = (): UseMutationResult<
+    { message: string },
+    Error,
+    number
+> => {
     const queryClient = useQueryClient();
-    return useMutation({
+    return useMutation<{ message: string }, Error, number>({
         mutationFn: async (itemId: number) => {
-            const res = await axios.delete(
-                `${BASE_URL}/${TENANT_ID}/items/${itemId}`
-            );
+            const res = await axios.delete<{
+                message: string;
+            }>(`${BASE_URL}/${TENANT_ID}/items/${itemId}`);
             return res.data;
         },
         onSuccess: (data) => {
@@ -184,12 +194,16 @@ export const useDeleteTodo = () => {
  *   "url": "string"
  * }
  */
-export const useUploadImage = () =>
-    useMutation({
+export const useUploadImage = (): UseMutationResult<
+    string,
+    Error,
+    File
+> =>
+    useMutation<string, Error, File>({
         mutationFn: async (image: File) => {
             const formData = new FormData();
             formData.append('image', image);
-            const res = await axios.post(
+            const res = await axios.post<{ url: string }>(
                 `${BASE_URL}/${TENANT_ID}/images/upload`,
                 formData,
                 {
