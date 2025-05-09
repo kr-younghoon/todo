@@ -1,23 +1,30 @@
 'use client';
 
+import ActionButtons from '@/components/TodoDetail/ActionButtons';
 import ImageUpload from '@/components/TodoDetail/ImageUpload';
 import MemoField from '@/components/TodoDetail/MemoField';
 import NameField from '@/components/TodoDetail/NameField';
 import {
+    useDeleteTodo,
     useTodoDetail,
+    useUpdateTodo,
     useUploadImage,
 } from '@/hooks/useTodos';
 import { NameFieldState, Todo } from '@/types/todo';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function TodoDetailPage() {
     const id = Number(useParams().itemid);
+    const router = useRouter();
+
     const {
         data: todo,
         isLoading,
         isError,
     } = useTodoDetail(id);
+    const updateTodo = useUpdateTodo();
+    const deleteTodo = useDeleteTodo();
     const uploadImage = useUploadImage();
 
     console.log(todo);
@@ -66,6 +73,28 @@ export default function TodoDetailPage() {
         }));
     };
 
+    const handleSave = () => {
+        const { name, memo, imageUrl, isCompleted } =
+            currentTodo;
+
+        updateTodo.mutate(
+            {
+                itemId: id,
+                data: { name, memo, imageUrl, isCompleted },
+            },
+            {
+                onSuccess: () => {
+                    router.push('/');
+                },
+            }
+        );
+    };
+    const handleDelete = () => {
+        deleteTodo.mutate(id, {
+            onSuccess: () => router.push('/'),
+        });
+    };
+
     return (
         <div>
             <h2>TODO DETAIL - {id}</h2>
@@ -81,6 +110,10 @@ export default function TodoDetailPage() {
             <MemoField
                 initialMemo={currentTodo.memo}
                 onChange={handleMemoChange}
+            />
+            <ActionButtons
+                onSave={handleSave}
+                onDelete={handleDelete}
             />
         </div>
     );
