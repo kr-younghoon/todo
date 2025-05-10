@@ -2,6 +2,10 @@
 
 import { useCreateTodo } from '@/hooks/useTodos';
 import { useState } from 'react';
+import SearchBar from '../ui/SearchBar';
+import Button from '../ui/Button';
+import IconPlus2 from '../ui/icons/ic-plus2';
+import styles from './TodoForm.module.css';
 
 export default function TodoForm() {
     const [text, setText] = useState('');
@@ -20,12 +24,22 @@ export default function TodoForm() {
     };
     return (
         <>
-            <input
-                type="text"
-                value={text}
-                onChange={onChangeInput}
-            />
-            <button onClick={onClickBtn}>추가하기</button>
+            <div className={styles.Search}>
+                <SearchBar
+                    value={text}
+                    onChange={onChangeInput}
+                    placeholder="할 일을 입력해주세요"
+                />
+                <Button
+                    variant="add"
+                    disabled={!text.trim()}
+                    onClick={onClickBtn}
+                    className={`fB16`}
+                >
+                    <IconPlus2 />
+                    <p>추가하기</p>
+                </Button>
+            </div>
         </>
     );
 }
