@@ -19,7 +19,7 @@ export default function IconChecked() {
                     stroke="#FEFCE8"
                     strokeWidth="4"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         </>
