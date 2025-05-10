@@ -1,7 +1,13 @@
-export default function ImgHeaderLogoLarge() {
+export type ImgHeaderLogoProps =
+    React.ComponentPropsWithoutRef<'svg'>;
+
+export default function ImgHeaderLogoLarge(
+    props: ImgHeaderLogoProps
+) {
     return (
         <>
             <svg
+                {...props}
                 width="151"
                 height="40"
                 viewBox="0 0 151 40"
