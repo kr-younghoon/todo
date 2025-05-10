@@ -1,7 +1,8 @@
 'use client';
 
 import { NameFieldState } from '@/types/todo';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import ChecklistDetail from '../ui/CheckListDetail';
 
 interface Props {
     initialName: string;
@@ -25,35 +26,37 @@ export default function NameField({
         setCompleted(initialCompleted);
     }, [initialName, initialCompleted]);
 
-    const onChangeName = (
-        e: ChangeEvent<HTMLInputElement>
-    ) => {
-        const newName = e.target.value;
+    const onChangeName = (newName: string) => {
         setName(newName);
         onChange({ name: newName });
     };
 
-    const onChangeCheckbox = (
-        e: ChangeEvent<HTMLInputElement>
-    ) => {
-        const checked = e.target.checked;
+    const onChangeCheckbox = (checked: boolean) => {
         setCompleted(checked);
         onChange({ isCompleted: checked });
     };
 
     return (
-        <div>
-            <h2>name field</h2>
-            <input
-                type="checkbox"
+        // <div>
+        //     <h2>name field</h2>
+        //     <input
+        //         type="checkbox"
+        //         checked={isCompleted}
+        //         onChange={onChangeCheckbox}
+        //     />
+        //     <input
+        //         type="text"
+        //         value={name}
+        //         onChange={onChangeName}
+        //     />
+        // </div>
+        <>
+            <ChecklistDetail
+                name={name}
                 checked={isCompleted}
-                onChange={onChangeCheckbox}
+                onNameChange={onChangeName}
+                onToggle={onChangeCheckbox}
             />
-            <input
-                type="text"
-                value={name}
-                onChange={onChangeName}
-            />
-        </div>
+        </>
     );
 }

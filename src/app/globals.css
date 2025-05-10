@@ -28,6 +28,7 @@
 
     /* Violet */
     --color-violet-600: #7c3aed;
+    --color-violet-200: #ddd6fe;
     --color-violet-100: #ede9fe;
 
     /* Rose & Lime */
@@ -64,7 +65,11 @@ body {
 .app-container {
     /* width: 100%; */
     padding: 0 360px;
-    /* width: 1200px; */
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    width: 1200px;
 }
 
 /* 뷰포트 1199px 이하 — 744px 초과 */

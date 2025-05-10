@@ -13,6 +13,7 @@ import {
 import { NameFieldState, Todo } from '@/types/todo';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import styles from './page.module.css';
 
 export default function TodoDetailPage() {
     const id = Number(useParams().itemid);
@@ -96,8 +97,7 @@ export default function TodoDetailPage() {
     };
 
     return (
-        <div>
-            <h2>TODO DETAIL - {id}</h2>
+        <div className={styles.column}>
             <NameField
                 initialName={currentTodo.name}
                 initialCompleted={currentTodo.isCompleted}

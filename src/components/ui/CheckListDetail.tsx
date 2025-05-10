@@ -1,8 +1,9 @@
 'use client';
 
 import { ChangeEvent } from 'react';
-import IconCheck from '../ui/icons/ic-check'; // 체크 아이콘 컴포넌트 경로에 맞게 수정
 import styles from './styles/ChecklistDetail.module.css';
+import IconChecked from './icons/ic-checked';
+import IconNotChecked from './icons/ic-not-checked';
 
 export interface ChecklistDetailProps {
     /** 항목 텍스트 */
@@ -38,7 +39,7 @@ export default function ChecklistDetail({
     };
 
     return (
-        <div>
+        <>
             <label
                 className={`${styles.container} ${
                     checked
@@ -53,7 +54,11 @@ export default function ChecklistDetail({
                     className={styles.checkbox}
                 />
                 <span className={styles.icon}>
-                    {checked && <IconCheck />}
+                    {checked ? (
+                        <IconChecked />
+                    ) : (
+                        <IconNotChecked />
+                    )}
                 </span>
                 <input
                     type="text"
@@ -63,6 +68,6 @@ export default function ChecklistDetail({
                     placeholder="할 일을 입력하세요"
                 />
             </label>
-        </div>
+        </>
     );
 }

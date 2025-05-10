@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 24px;
+    /* transition: background-color 0.2s; */
+    padding: 0 12px;
+    gap: 16px;
+    max-width: 343px;
+    margin: 16px auto;
+    border: 2px solid var(--color-slate-900);
+}
+
+/* 미완료 상태 */
+.unchecked {
+    background-color: #ffffff;
+}
+
+/* 완료 상태 */
+.checked {
+    background-color: var(
+        --color-violet-200
+    ); /* 연보라 계열 배경 */
+}
+
+.checkbox {
+    /* 화면에는 숨기고 커스텀 아이콘만 보여줌 */
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    /* margin-right: 12px; */
+    border: 2px solid var(--color-slate-400);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.checked .icon {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.textInput {
+    border: none;
+    background: transparent;
+    font: var(--font-B-20) 'NanumSquare', sans-serif;
+    color: var(--color-slate-900);
+    outline: none;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.checked .textInput {
+    color: var(--color-slate-900);
+    text-decoration: underline;
+}
+
+/* ────────── 중간화면 (<= 744px 이상) ────────── */
+@media (min-width: 376px) {
+    .container {
+        max-width: 696px;
+        margin: 24px;
+    }
+}
+
+/* ────────── 대형화면 (>= 745px) ────────── */
+@media (min-width: 745px) {
+    .container {
+        max-width: 996px;
+        /* 위아래 24px, 좌우 102px */
+        margin: 24px 102px;
+    }
+}

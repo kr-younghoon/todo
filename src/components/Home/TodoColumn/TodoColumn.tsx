@@ -28,7 +28,9 @@ export default function TodoColumn() {
     return (
         <div className={styles.columns}>
             <div className={styles.column}>
-                <ImgTodo />
+                <div className={styles.marginBottom}>
+                    <ImgTodo />
+                </div>
 
                 {/* {} */}
                 {todoList.length === 0 ? (
@@ -56,12 +58,9 @@ export default function TodoColumn() {
             </div>
 
             <div className={styles.column}>
-                <ImgDone />
-                {/* doneList안에 빈값이면 <ImgDoneLarge/>이 나와야함 반응형 웹에 따라 <ImgDonSmall/>이 나옴*/}
-
-                {/* {doneList.map((item) => (
-                    <TodoItem key={item.id} {...item} />
-                ))} */}
+                <div className={styles.marginBottom}>
+                    <ImgDone />
+                </div>
 
                 {doneList.length === 0 ? (
                     <div className={styles.iconColumn}>

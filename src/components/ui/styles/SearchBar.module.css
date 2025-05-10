@@ -7,7 +7,9 @@
     box-shadow: 4px 4px 0px 0px var(--color-slate-900);
     background-color: var(--color-slate-100);
 }
-
+.SearchBar:focus {
+    outline: none;
+}
 /* 뷰포트 최대 744px일 때 */
 @media screen and (max-width: 744px) {
     .SearchBar {

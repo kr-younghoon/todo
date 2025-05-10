@@ -1,28 +1,47 @@
-/* components/TodoItem/TodoItem.module.css */
+/* 공통 박스 스타일 */
 .item {
     display: flex;
+    height: 50px;
     align-items: center;
-    padding: 8px;
-    margin: 4px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding-left: 12px;
+    margin-right: 24px;
+    border: 2px solid var(--color-slate-900);
+    border-radius: 27px;
+    background: white;
+    /* box-shadow: 4px 4px 0 0 var(--color-slate-900); */
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
+    gap: 9px;
 }
 
-.item input {
-    margin-right: 8px;
-    cursor: pointer; /* 체크박스 위에선 포인터 모양 유지 */
+/* 완료 전 스타일 */
+.pending {
+    background-color: var(--color-white);
+    color: var(--color-slate-700);
 }
 
+/* 완료 후 스타일 */
+.completed {
+    background-color: var(--color-violet-100);
+    color: var(--color-slate-400);
+    text-decoration: line-through;
+}
+
+/* 체크박스 커스터마이징 */
+.item input[type='checkbox'] {
+    margin-right: 0.75rem;
+    /* 최신 브라우저용 accent-color */
+    accent-color: var(--color-violet-600);
+}
+
+/* 할 일 텍스트 */
 .name {
     flex: 1;
+    font: var(--font-B-16) 'NanumSquare', sans-serif;
 }
 
-.completed {
-    background-color: #e0ffe0;
-}
-
-.pending {
-    background-color: #ffe0e0;
+.checkboxBtn {
+    all: unset;
+    width: 32px;
+    height: 32px;
 }
