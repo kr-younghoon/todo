@@ -1,0 +1,35 @@
+.header {
+    padding: 10px 360px;
+    border: none;
+    border-bottom: 1px solid var(--color-slate-200);
+    background-color: #ffffff;
+}
+
+@media screen and (max-width: 1199px) and (min-width: 745px) {
+    .header {
+        padding: 10px 24px;
+    }
+}
+
+/* 뷰포트 744px 이하 */
+@media screen and (max-width: 744px) {
+    .header {
+        padding: 10px 16px;
+    }
+}
+
+.iconLarge {
+    display: inline-block;
+}
+.iconSmall {
+    display: none;
+}
+
+@media screen and (max-width: 744px) {
+    .iconLarge {
+        display: none;
+    }
+    .iconSmall {
+        display: inline-block;
+    }
+}
