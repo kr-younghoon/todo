@@ -11,8 +11,8 @@ export default function IconCheck() {
                 <path
                     d="M2 7L6.5 11.5L14 4"
                     stroke="#0F172A"
-                    stroke-width="2"
-                    stroke-linecap="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                 />
             </svg>

@@ -16,7 +16,7 @@ export default function ImgSearch() {
                     rx="23"
                     fill="#0F172A"
                     stroke="#0F172A"
-                    stroke-width="2"
+                    strokeWidth="2"
                 />
                 <rect
                     x="1"
@@ -26,7 +26,7 @@ export default function ImgSearch() {
                     rx="23"
                     fill="#F1F5F9"
                     stroke="#0F172A"
-                    stroke-width="2"
+                    strokeWidth="2"
                 />
             </svg>
         </>

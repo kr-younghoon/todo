@@ -17,8 +17,8 @@ export default function IconChecked() {
                 <path
                     d="M8 16.2857L13.8182 22L24 12"
                     stroke="#FEFCE8"
-                    stroke-width="4"
-                    stroke-linecap="round"
+                    strokeWidth="4"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                 />
             </svg>

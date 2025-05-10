@@ -14,7 +14,7 @@ export default function IconNotChecked() {
                     r="15"
                     fill="#FEFCE8"
                     stroke="#0F172A"
-                    stroke-width="2"
+                    strokeWidth="2"
                 />
             </svg>
         </>
