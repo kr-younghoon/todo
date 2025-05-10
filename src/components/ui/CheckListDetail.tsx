@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent } from 'react';
-import styles from './styles/ChecklistDetail.module.css';
+import styles from './styles/CheckListDetail.module.css';
 import IconChecked from './icons/ic-checked';
 import IconNotChecked from './icons/ic-not-checked';
 
