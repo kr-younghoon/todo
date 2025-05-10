@@ -81,7 +81,12 @@ export default function TodoDetailPage() {
         updateTodo.mutate(
             {
                 itemId: id,
-                data: { name, memo, imageUrl, isCompleted },
+                data: {
+                    name,
+                    memo: memo ?? '',
+                    imageUrl: imageUrl ?? '',
+                    isCompleted,
+                },
             },
             {
                 onSuccess: () => {
@@ -103,14 +108,16 @@ export default function TodoDetailPage() {
                 initialCompleted={currentTodo.isCompleted}
                 onChange={handleNameChange}
             />
-            <ImageUpload
-                initialUrl={currentTodo.imageUrl}
-                onFileSelect={handleFileSelect}
-            />
-            <MemoField
-                initialMemo={currentTodo.memo}
-                onChange={handleMemoChange}
-            />
+            <div className={styles.row}>
+                <ImageUpload
+                    initialUrl={currentTodo.imageUrl}
+                    onFileSelect={handleFileSelect}
+                />
+                <MemoField
+                    initialMemo={currentTodo.memo}
+                    onChange={handleMemoChange}
+                />
+            </div>
             <ActionButtons
                 onSave={handleSave}
                 onDelete={handleDelete}

@@ -1,0 +1,104 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 589px;
+    /* height: 229px; */
+    overflow: hidden;
+}
+
+/* 배경 SVG */
+.bgSvg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgSvg svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 실제 텍스트/헤더 영역 */
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 헤더 타이틀 */
+.title {
+    margin: 0;
+    color: var(--amber-800, #92400e);
+    text-align: center;
+    font-family: NanumSquare, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    margin: 24px 16px;
+    line-height: normal;
+}
+
+/* 입력영역 */
+.textarea {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 24px);
+
+    padding: 0;
+    padding: 0 10px 0;
+    box-sizing: border-box;
+
+    border: none;
+    background: transparent;
+    resize: none;
+
+    font-family: NanumSquare, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--slate-800, #1e293b);
+    text-align: center;
+
+    overflow-y: auto;
+}
+@media (max-width: 744px) {
+    .wrapper {
+        width: 696px;
+        height: 311px;
+    }
+    .content {
+        padding: 16px;
+    }
+    .textarea {
+        height: 229px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper {
+        width: 343px;
+        height: 311px;
+    }
+    .content {
+        padding: 16px;
+    }
+    .textarea {
+        height: 229px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

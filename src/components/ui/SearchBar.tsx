@@ -15,14 +15,14 @@ export default function SearchBar({
     placeholder,
 }: SearchBarProps) {
     return (
-        <div className={styles.wrapper}>
-            <input
-                type="text"
-                value={value}
-                onChange={onChange}
-                placeholder={placeholder}
-                className={`${styles.SearchBar} fR16`}
-            />
-        </div>
+        // <div className={styles.wrapper}>
+        <input
+            type="text"
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            className={`${styles.SearchBar} fR16`}
+        />
+        // </div>
     );
 }

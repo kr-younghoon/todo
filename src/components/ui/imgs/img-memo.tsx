@@ -1,7 +1,7 @@
 export default function ImgMemo() {
     return (
         <>
-            <div>
+            <>
                 <svg
                     width="696"
                     height="426"
@@ -98,7 +98,7 @@ export default function ImgMemo() {
                         </clipPath>
                     </defs>
                 </svg>
-            </div>
+            </>
         </>
     );
 }

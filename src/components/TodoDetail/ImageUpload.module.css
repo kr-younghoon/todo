@@ -1,0 +1,76 @@
+.wrapper {
+    flex-shrink: 0;
+}
+
+.uploadBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 공통 스타일 */
+    border: 2px dashed var(--color-slate-300);
+    background-color: var(--color-slate-50);
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* 파일 입력 숨기기 */
+.fileInput {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* placeholder 아이콘 */
+.placeholder {
+    pointer-events: none;
+}
+
+.preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 하단 우측 편집(+) 버튼 */
+.button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    /* border: 2px solid var(--color-slate-900); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-slate-200);
+    color: var(--color-slate-500);
+}
+
+/* 브레이크포인트별 크기 지정 */
+@media (min-width: 1024px) {
+    .uploadBox {
+        width: 384px;
+        height: 311px;
+    }
+}
+
+@media (min-width: 744px) and (max-width: 1023px) {
+    .uploadBox {
+        width: 696px;
+        height: 311px;
+    }
+}
+
+@media (max-width: 743px) {
+    .uploadBox {
+        width: 343px;
+        height: 311px;
+    }
+}

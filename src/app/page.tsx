@@ -4,12 +4,8 @@ import TodoForm from '@/components/Home/TodoForm';
 export default function Home() {
     return (
         <>
-            <div>
-                <TodoForm />
-            </div>
-            <div>
-                <TodoColumn />
-            </div>
+            <TodoForm />
+            <TodoColumn />
         </>
     );
 }
